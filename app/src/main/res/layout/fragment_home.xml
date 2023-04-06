@@ -203,7 +203,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
-                    android:id="@+id/divider2"
+                    android:id="@+id/divider2_notice"
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_marginStart="14dp"
@@ -223,7 +223,7 @@
                     android:layout_marginBottom="18dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/divider2"
+                    app:layout_constraintTop_toBottomOf="@+id/divider2_notice"
                     app:srcCompat="@drawable/ic_baseline_access_alarm_24" />
 
                 <TextView
@@ -274,6 +274,7 @@
                 app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_notice"
                 android:layout_width="0dp"
                 android:layout_height="210dp"
                 android:layout_marginTop="15dp"
