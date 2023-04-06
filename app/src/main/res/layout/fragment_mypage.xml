@@ -47,7 +47,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_user_email"
+                android:id="@+id/tv_user_email_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -58,16 +58,132 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_user_title" />
 
             <TextView
-                android:id="@+id/tv_user_car_num"
+                android:id="@+id/tv_user_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="이메일"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_user_email_title"
+                app:layout_constraintStart_toEndOf="@+id/tv_user_email_title"
+                app:layout_constraintTop_toTopOf="@+id/tv_user_email_title" />
+
+            <TextView
+                android:id="@+id/tv_user_car_num_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/inter_regular"
                 android:text="차량 번호"
                 android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="@+id/tv_user_email"
-                app:layout_constraintTop_toBottomOf="@+id/tv_user_email" />
+                app:layout_constraintStart_toStartOf="@+id/tv_user_email_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_user_email_title" />
 
+            <TextView
+                android:id="@+id/tv_user_car_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_bold"
+                android:text="차량 번호"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_user_car_num_title"
+                app:layout_constraintStart_toStartOf="@+id/tv_user_email"
+                app:layout_constraintTop_toTopOf="@+id/tv_user_car_num_title" />
+
+            <TextView
+                android:id="@+id/tv_user_address_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/inter_regular"
+                android:text="주소"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/tv_user_car_num_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_user_car_num_title" />
+
+            <TextView
+                android:id="@+id/tv_user_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_bold"
+                android:text="주소"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_user_address_title"
+                app:layout_constraintStart_toStartOf="@+id/tv_user_car_num"
+                app:layout_constraintTop_toTopOf="@+id/tv_user_address_title" />
+
+            <TextView
+                android:id="@+id/tv_user_warn_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/inter_regular"
+                android:text="누적 신고"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/tv_user_address_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_user_address_title" />
+
+            <TextView
+                android:id="@+id/tv_user_warn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_bold"
+                android:text="2회"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_user_warn_title"
+                app:layout_constraintStart_toStartOf="@+id/tv_user_address"
+                app:layout_constraintTop_toTopOf="@+id/tv_user_warn_title" />
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_user_warn_title" />
+
+            <TextView
+                android:id="@+id/tv_service_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/inter_semibold"
+                android:text="고객센터"
+                android:textColor="@color/grey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_user_title"
+                app:layout_constraintTop_toBottomOf="@+id/divider1" />
+
+            <TextView
+                android:id="@+id/tv_notice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/inter_regular"
+                android:text="공지사항"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_service_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_service_title" />
+
+            <TextView
+                android:id="@+id/tv_go_warn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/inter_regular"
+                android:text="신고하기"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_notice"
+                app:layout_constraintTop_toBottomOf="@+id/tv_notice" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
