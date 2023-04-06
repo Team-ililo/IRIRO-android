@@ -8,10 +8,10 @@
 
     <ImageView
         android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginStart="25dp"
-        android:src="@tools:sample/avatars"
+        android:src="@drawable/ic_baseline_keyboard_arrow_left_24"
         app:layout_constraintBottom_toBottomOf="@+id/tv_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_title"
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
     <View
-        android:id="@+id/divider1"
+        android:id="@+id/divider1_notice"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginStart="20dp"
@@ -68,32 +68,6 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_notice_1"
         app:layout_constraintStart_toStartOf="@+id/tv_notice_1"
-        app:layout_constraintTop_toBottomOf="@+id/divider1" />
-
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="20dp"
-        android:background="@color/grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_notice_2" />
-
-    <TextView
-        android:id="@+id/tv_notice_3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:fontFamily="@font/inter_semibold"
-        android:text="102동 - 4/5일 오후 1시부터 수도공사 "
-        android:textColor="#B3000000"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/tv_notice_2"
-        app:layout_constraintStart_toStartOf="@+id/tv_notice_2"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+        app:layout_constraintTop_toBottomOf="@+id/divider1_notice" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

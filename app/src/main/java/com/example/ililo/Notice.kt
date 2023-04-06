@@ -12,5 +12,9 @@ class Notice : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        //뒤로가기
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
     }
 }
