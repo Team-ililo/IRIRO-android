@@ -40,5 +40,11 @@ class HomeFragment: Fragment() {
             startActivity(intent)
         }
 
+        //신고내역 이동
+        binding.btnDeclareMember.setOnClickListener {
+            val intent = Intent(context, MemberDeclareList::class.java)
+            startActivity(intent)
+        }
+
     }
 }
