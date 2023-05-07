@@ -11,6 +11,7 @@ import com.example.ililo.databinding.FragmentMypageBinding
 class MyPageFragment: Fragment() {
     private var _binding: FragmentMypageBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,14 +26,19 @@ class MyPageFragment: Fragment() {
 
         //공지사항 이동
         binding.tvNotice.setOnClickListener {
-            val intent = Intent(context, Notice::class.java)
+            val intent = Intent(context, NoticeActivity::class.java)
             startActivity(intent)
         }
 
         //신고하기 이동
         binding.tvGoWarn.setOnClickListener {
-            val intent = Intent(context, Declare::class.java)
+            val intent = Intent(context, DeclareActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }

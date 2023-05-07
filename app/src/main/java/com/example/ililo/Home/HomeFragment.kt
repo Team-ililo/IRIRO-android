@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.ililo.databinding.FragmentHomeBinding
-import com.example.ililo.databinding.FragmentMypageBinding
 
 class HomeFragment: Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -26,23 +25,23 @@ class HomeFragment: Fragment() {
 
         //공지사항 이동
         binding.tvNotice.setOnClickListener {
-            val intent = Intent(context, Notice::class.java)
+            val intent = Intent(context, NoticeActivity::class.java)
             startActivity(intent)
         }
 
         binding.btnGoNotice.setOnClickListener {
-            val intent = Intent(context, Notice::class.java)
+            val intent = Intent(context, NoticeActivity::class.java)
             startActivity(intent)
         }
 
         binding.layoutNotice.setOnClickListener {
-            val intent = Intent(context, Notice::class.java)
+            val intent = Intent(context, NoticeActivity::class.java)
             startActivity(intent)
         }
 
         //신고내역 이동
         binding.btnDeclareMember.setOnClickListener {
-            val intent = Intent(context, MemberDeclareList::class.java)
+            val intent = Intent(context, MemberDeclareListActivity::class.java)
             startActivity(intent)
         }
 

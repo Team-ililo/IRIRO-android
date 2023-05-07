@@ -3,9 +3,8 @@ package com.example.ililo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.ililo.databinding.ActivityMemberDeclareListBinding
-import com.example.ililo.databinding.ActivityNoticeBinding
 
-class MemberDeclareList : AppCompatActivity() {
+class MemberDeclareListActivity : AppCompatActivity() {
     private val binding: ActivityMemberDeclareListBinding by lazy {
         ActivityMemberDeclareListBinding.inflate(layoutInflater)
     }
