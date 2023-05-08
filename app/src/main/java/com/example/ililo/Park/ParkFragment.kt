@@ -1,4 +1,4 @@
-package com.example.ililo
+package com.example.ililo.Park
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
