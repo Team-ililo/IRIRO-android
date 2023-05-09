@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.ililo.databinding.ActivityNoticeBinding
 
-class Notice : AppCompatActivity() {
+class NoticeActivity : AppCompatActivity() {
     private val binding: ActivityNoticeBinding by lazy {
         ActivityNoticeBinding.inflate(layoutInflater)
     }
