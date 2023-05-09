@@ -1,4 +1,4 @@
-package com.example.ililo
+package com.example.ililo.Notice
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

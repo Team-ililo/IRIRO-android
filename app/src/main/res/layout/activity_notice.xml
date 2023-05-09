@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NoticeActivity">
+    tools:context=".Notice.NoticeActivity">
 
     <ImageView
         android:id="@+id/btn_back"
@@ -30,44 +30,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_notice_1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_notice"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
-        android:fontFamily="@font/inter_semibold"
-        android:text="102동 - 4/5일 오후 1시부터 수도공사 "
-        android:textColor="#B3000000"
-        android:textSize="16sp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
-
-    <View
-        android:id="@+id/divider1_notice"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="20dp"
-        android:background="@color/grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_notice_1" />
-
-    <TextView
-        android:id="@+id/tv_notice_2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:fontFamily="@font/inter_semibold"
-        android:text="102동 - 4/5일 오후 1시부터 수도공사 "
-        android:textColor="#B3000000"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/tv_notice_1"
-        app:layout_constraintStart_toStartOf="@+id/tv_notice_1"
-        app:layout_constraintTop_toBottomOf="@+id/divider1_notice" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
