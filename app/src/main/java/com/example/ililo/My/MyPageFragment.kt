@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.ililo.Declare.DeclareActivity
-import com.example.ililo.NoticeActivity
+import com.example.ililo.Notice.NoticeActivity
 import com.example.ililo.databinding.FragmentMypageBinding
 
 class MyPageFragment: Fragment() {

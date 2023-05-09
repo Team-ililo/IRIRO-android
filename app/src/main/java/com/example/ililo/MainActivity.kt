@@ -2,6 +2,9 @@ package com.example.ililo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.ililo.Home.HomeFragment
+import com.example.ililo.My.MyPageFragment
+import com.example.ililo.Park.ParkFragment
 import com.example.ililo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
