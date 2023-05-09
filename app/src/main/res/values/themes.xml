@@ -14,4 +14,16 @@
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
     </style>
+
+    <!-- Splash Theme -->
+    <style name="Theme.Splash" parent="Theme.AppCompat.NoActionBar">
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/background</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">?attr/background</item>
+        <!-- Background color. -->
+        <item name="background">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
+
+    </style>
 </resources>
