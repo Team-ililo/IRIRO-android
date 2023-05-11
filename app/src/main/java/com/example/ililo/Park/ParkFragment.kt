@@ -13,9 +13,6 @@ import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.TimePicker
 import androidx.annotation.RequiresApi
-import com.example.ililo.Declare.MemberDeclareListActivity
-import com.example.ililo.Home.HomeFragment
-import com.example.ililo.Notice.NoticeActivity
 import com.example.ililo.R
 import com.example.ililo.databinding.FragmentParkBinding
 
@@ -41,6 +38,7 @@ class ParkFragment: Fragment() {
             startActivity(intent)
         }
 
+        //출차 시간 등록
         binding.layoutRegister.setOnClickListener{
             registerTime()
         }
