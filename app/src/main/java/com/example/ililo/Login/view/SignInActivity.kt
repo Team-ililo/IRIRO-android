@@ -1,4 +1,4 @@
-package com.example.ililo.Login
+package com.example.ililo.Login.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
