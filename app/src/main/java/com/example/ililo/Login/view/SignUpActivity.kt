@@ -70,11 +70,13 @@ class SignUpActivity : AppCompatActivity(), SignUpInterface {
 
     override fun onPostSignUpSuccess(response: SignUpRes) {
         val intent = Intent(this,SignInActivity::class.java)
+        Toast.makeText(this, "회원가입을 완료했습니다!\n 로그인해주세요.", Toast.LENGTH_SHORT).show()
         finishAffinity()        // 스택에 쌓인 액티비티 비우기
         startActivity(intent)
     }
 
     override fun onPostSignUpFailure(message: String) {
         Log.d("SignUp","실패")
+        Toast.makeText(this, "회원가입에 실패했습니다!\n 다시 시도해주세요.", Toast.LENGTH_SHORT).show()
     }
 }
