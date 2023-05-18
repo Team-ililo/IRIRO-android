@@ -8,14 +8,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.TimePicker
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.ililo.Declare.MemberDeclareListActivity
-import com.example.ililo.Notice.NoticeActivity
+import com.example.ililo.Notice.view.NoticeActivity
 import com.example.ililo.R
 import com.example.ililo.databinding.FragmentHomeBinding
 

@@ -70,7 +70,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Notice.NoticeActivity"
+            android:name=".Notice.view.NoticeActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
