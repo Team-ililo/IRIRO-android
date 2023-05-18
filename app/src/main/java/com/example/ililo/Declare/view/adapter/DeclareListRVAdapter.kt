@@ -1,4 +1,4 @@
-package com.example.ililo.Declare.adapter
+package com.example.ililo.Declare.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

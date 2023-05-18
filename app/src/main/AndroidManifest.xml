@@ -63,7 +63,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Declare.DeclareActivity"
+            android:name=".Declare.view.DeclareActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
