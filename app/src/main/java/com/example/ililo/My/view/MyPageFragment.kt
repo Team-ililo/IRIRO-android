@@ -10,10 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat.finishAffinity
 import com.example.ililo.ApplicationClass.Companion.prefs
-import com.example.ililo.Declare.DeclareActivity
+import com.example.ililo.Declare.view.DeclareActivity
 import com.example.ililo.Login.view.SignInActivity
 import com.example.ililo.My.model.LogOutRes
-import com.example.ililo.My.model.User
 import com.example.ililo.My.model.UserProfileRes
 import com.example.ililo.My.service.MyInterface
 import com.example.ililo.My.service.MyService
@@ -80,6 +79,9 @@ class MyPageFragment: Fragment(), MyInterface {
         binding.tvUserCarNum.text = res.vehicle_number
         binding.tvUserAddress.text = res.address
         binding.tvUserWarn.text = res.number_of_complaints.toString()
+
+        prefs.edit().putString("vehicle_number",res.vehicle_number)
+        prefs.edit().apply()
 
     }
 
