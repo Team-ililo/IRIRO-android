@@ -56,7 +56,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Declare.MemberDeclareListActivity"
+            android:name=".Declare.view.MemberDeclareListActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
