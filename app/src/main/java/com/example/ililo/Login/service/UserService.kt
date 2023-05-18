@@ -3,6 +3,8 @@ package com.example.ililo.Login.service
 import android.util.Log
 import com.example.ililo.ApplicationClass.Companion.prefs
 import com.example.ililo.ApplicationClass.Companion.sRetrofit
+import com.example.ililo.Login.model.SignInReq
+import com.example.ililo.Login.model.SignInRes
 import com.example.ililo.Login.model.SignUpReq
 import com.example.ililo.Login.model.SignUpRes
 import retrofit2.Call
@@ -43,5 +45,27 @@ class SignUpService(val signUpInterface: SignUpInterface) {
                 }
                 }))
         }
+    }
+}
+
+class SignInService(val signInInterface: SignInInterface) {
+    private val retrofit: LoginRetrofit = sRetrofit.create(LoginRetrofit::class.java)
+
+    fun tryPostSignIn(email: String, password: String) {
+        retrofit.postSignInReq(SignInReq(email, password)).enqueue((object : Callback<SignInRes>{
+            override fun onResponse(call: Call<SignInRes>, response: Response<SignInRes>) {
+                if(response.isSuccessful) {
+                    signInInterface.onPostSignUpSuccess(response.body() as SignInRes)
+                    Log.d("SignIn", "success")
+                } else {
+                    Log.d("SignIn", "failure")
+                }
+            }
+            override fun onFailure(call: Call<SignInRes>, t: Throwable) {
+                Log.d("tryPostSignIn", t.message!!)
+                t.printStackTrace()
+                signInInterface.onPostSignUpFailure(t.message ?: "통신오류")
+            }
+        }))
     }
 }

@@ -1,7 +1,7 @@
 package com.example.ililo.Login.model
 
 data class SignUpResult(
-    val member_id: Int,
+    val member_id: Long,
     val name: String,
     val phone_number: String,
     val email: String,

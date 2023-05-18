@@ -69,6 +69,8 @@ class SignUpActivity : AppCompatActivity(), SignUpInterface {
     }
 
     override fun onPostSignUpSuccess(response: SignUpRes) {
+        prefs.edit().putLong("userIdx", response.data.member_id).apply()
+
         val intent = Intent(this,SignInActivity::class.java)
         Toast.makeText(this, "회원가입을 완료했습니다!\n 로그인해주세요.", Toast.LENGTH_SHORT).show()
         finishAffinity()        // 스택에 쌓인 액티비티 비우기
