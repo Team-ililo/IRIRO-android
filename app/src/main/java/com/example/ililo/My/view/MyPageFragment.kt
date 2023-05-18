@@ -78,7 +78,7 @@ class MyPageFragment: Fragment(), MyInterface {
         binding.tvUserEmail.text = res.email
         binding.tvUserCarNum.text = res.vehicle_number
         binding.tvUserAddress.text = res.address
-        binding.tvUserWarn.text = res.number_of_complaints.toString()
+        binding.tvUserWarn.text = res.number_of_complaints.toString() + "회"
 
         prefs.edit().putString("vehicle_number",res.vehicle_number)
         prefs.edit().apply()

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ListAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ililo.ApplicationClass
 import com.example.ililo.Notice.model.NoticeList
 import com.example.ililo.Notice.model.NoticeRes
 import com.example.ililo.Notice.service.NoticeListInterface
@@ -16,11 +17,12 @@ class NoticeActivity : AppCompatActivity(), NoticeListInterface {
     private val binding: ActivityNoticeBinding by lazy {
         ActivityNoticeBinding.inflate(layoutInflater)
     }
+    private val id = ApplicationClass.prefs.getLong("apartment_id",0L)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        NoticeService(this).tryGetNoticeList(1)
+        NoticeService(this).tryGetNoticeList(id)
 
         //뒤로가기
         binding.btnBack.setOnClickListener {
