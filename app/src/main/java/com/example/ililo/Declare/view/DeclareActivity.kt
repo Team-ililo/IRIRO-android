@@ -3,6 +3,7 @@ package com.example.ililo.Declare.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.example.ililo.Declare.model.DeclareListRes
 import com.example.ililo.Declare.model.DeclareReq
 import com.example.ililo.Declare.model.DeclareRes
 import com.example.ililo.Declare.service.DeclareInterface
@@ -30,13 +31,21 @@ class DeclareActivity : AppCompatActivity(), DeclareInterface {
         }
     }
 
-    override fun onGetDeclareListSuccess(response: DeclareRes) {
+    override fun onPostDeclareListSuccess(response: DeclareRes) {
         Log.d("신고하기","성공")
         finish()
     }
 
-    override fun onGetDeclareListFailure(message: String) {
+    override fun onPostDeclareListFailure(message: String) {
         Log.d("신고하기","실패")
+    }
+
+    override fun onGetDeclareListSuccess(response: DeclareListRes) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetDeclareListFailure(message: String) {
+
     }
 
 
