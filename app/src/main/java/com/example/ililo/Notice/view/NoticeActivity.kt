@@ -35,7 +35,7 @@ class NoticeActivity : AppCompatActivity(), NoticeListInterface {
         val res = response.data
 
         val noticeList: ArrayList<NoticeList> = arrayListOf()
-        val listAdapter = NoticeListRVAdapter(noticeList)
+        val listAdapter = NoticeListRVAdapter(noticeList, 1)
 
         binding.rvNotice.adapter = listAdapter
         binding.rvNotice.layoutManager = LinearLayoutManager(this)

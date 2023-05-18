@@ -1,18 +1,25 @@
 package com.example.ililo.Notice.view.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ililo.Notice.model.NoticeList
 import com.example.ililo.databinding.ItemDeclareNoticeListBinding
 
-class NoticeListRVAdapter (private val dataList: ArrayList<NoticeList>): RecyclerView.Adapter<NoticeListRVAdapter.DataViewHolder>(){
+class NoticeListRVAdapter (private val dataList: ArrayList<NoticeList>, val index: Int): RecyclerView.Adapter<NoticeListRVAdapter.DataViewHolder>(){
 
     inner class DataViewHolder(val binding: ItemDeclareNoticeListBinding):
         RecyclerView.ViewHolder(binding.root) {
             fun bind(data: NoticeList) {
                 binding.tvDeclare.text = data.notice
                 binding.tvDeclareDate.text = data.apartment_notice_date
+
+                if (index == 0) {
+                    binding.tvDeclare.setTextColor(Color.WHITE)
+                    binding.tvDeclareDate.setTextColor(Color.WHITE)
+                    binding.declareDivider.setBackgroundColor(Color.WHITE)
+                }
             }
         }
 

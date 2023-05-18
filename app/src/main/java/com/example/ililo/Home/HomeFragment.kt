@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,13 +14,19 @@ import android.widget.TextView
 import android.widget.TimePicker
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ililo.Declare.MemberDeclareListActivity
+import com.example.ililo.Notice.model.NoticeList
+import com.example.ililo.Notice.model.NoticeRes
+import com.example.ililo.Notice.service.NoticeListInterface
+import com.example.ililo.Notice.service.NoticeService
 import com.example.ililo.Notice.view.NoticeActivity
+import com.example.ililo.Notice.view.adapter.NoticeListRVAdapter
 import com.example.ililo.R
 import com.example.ililo.databinding.FragmentHomeBinding
 
 
-class HomeFragment: Fragment() {
+class HomeFragment: Fragment(), NoticeListInterface {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
@@ -34,6 +41,8 @@ class HomeFragment: Fragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        NoticeService(this).tryGetNoticeList(1)
 
         //공지사항 이동
         binding.tvNotice.setOnClickListener {
@@ -101,5 +110,23 @@ class HomeFragment: Fragment() {
         cancel.setOnClickListener{
             mAlertDialog.dismiss()
         }
+    }
+
+    override fun onGetNoticeListSuccess(response: NoticeRes) {
+        Log.d("공지사항", "success")
+
+        val res = response.data
+
+        val noticeList: ArrayList<NoticeList> = arrayListOf()
+        val listAdapter = NoticeListRVAdapter(noticeList, 0)
+
+        binding.rvHomeNotice.adapter = listAdapter
+        binding.rvHomeNotice.layoutManager = LinearLayoutManager(context)
+
+        noticeList.addAll(res)
+    }
+
+    override fun onGetNoticeListFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }
