@@ -1,4 +1,4 @@
-package com.example.ililo.Notice
+package com.example.ililo.Notice.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
