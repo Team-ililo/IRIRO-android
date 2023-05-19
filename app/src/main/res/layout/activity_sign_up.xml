@@ -45,6 +45,7 @@
                 android:paddingLeft="15dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:textCursorDrawable="@drawable/cursor_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_signup_name" />
@@ -71,6 +72,7 @@
                 android:paddingLeft="15dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:textCursorDrawable="@drawable/cursor_color"
                 app:layout_constraintEnd_toEndOf="@+id/tv_signup_name_text"
                 app:layout_constraintStart_toStartOf="@+id/tv_signup_name_text"
                 app:layout_constraintTop_toBottomOf="@+id/tv_signup_phone" />
@@ -97,6 +99,7 @@
                 android:paddingLeft="15dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:textCursorDrawable="@drawable/cursor_color"
                 app:layout_constraintEnd_toEndOf="@+id/tv_signup_name_text"
                 app:layout_constraintStart_toStartOf="@+id/tv_signup_name_text"
                 app:layout_constraintTop_toBottomOf="@+id/tv_signup_car_num" />
@@ -123,6 +126,7 @@
                 android:paddingLeft="15dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:textCursorDrawable="@drawable/cursor_color"
                 app:layout_constraintEnd_toEndOf="@+id/tv_signup_name_text"
                 app:layout_constraintStart_toStartOf="@+id/tv_signup_name_text"
                 app:layout_constraintTop_toBottomOf="@+id/tv_signup_car_type" />
@@ -149,6 +153,7 @@
                 android:paddingLeft="15dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:textCursorDrawable="@drawable/cursor_color"
                 app:layout_constraintEnd_toEndOf="@+id/tv_signup_name_text"
                 app:layout_constraintStart_toStartOf="@+id/tv_signup_name_text"
                 app:layout_constraintTop_toBottomOf="@+id/tv_signup_car_color" />
@@ -175,6 +180,7 @@
                 android:paddingLeft="15dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:textCursorDrawable="@drawable/cursor_color"
                 app:layout_constraintEnd_toEndOf="@+id/tv_signup_name_text"
                 app:layout_constraintStart_toStartOf="@+id/tv_signup_name_text"
                 app:layout_constraintTop_toBottomOf="@+id/tv_signup_apartment" />
@@ -201,6 +207,7 @@
                 android:paddingLeft="15dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:textCursorDrawable="@drawable/cursor_color"
                 app:layout_constraintEnd_toEndOf="@+id/tv_signup_name_text"
                 app:layout_constraintStart_toStartOf="@+id/tv_signup_name_text"
                 app:layout_constraintTop_toBottomOf="@+id/tv_signup_address" />
@@ -227,6 +234,7 @@
                 android:paddingLeft="15dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:textCursorDrawable="@drawable/cursor_color"
                 app:layout_constraintEnd_toEndOf="@+id/tv_signup_name_text"
                 app:layout_constraintStart_toStartOf="@+id/tv_signup_name_text"
                 app:layout_constraintTop_toBottomOf="@+id/tv_signup_device" />
@@ -253,6 +261,7 @@
                 android:paddingLeft="15dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:textCursorDrawable="@drawable/cursor_color"
                 app:layout_constraintEnd_toEndOf="@+id/tv_signup_name_text"
                 app:layout_constraintStart_toStartOf="@+id/tv_signup_name_text"
                 app:layout_constraintTop_toBottomOf="@+id/tv_signup_email" />
@@ -279,6 +288,8 @@
                 android:paddingLeft="15dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:inputType="textPassword"
+                android:textCursorDrawable="@drawable/cursor_color"
                 app:layout_constraintEnd_toEndOf="@+id/tv_signup_name_text"
                 app:layout_constraintStart_toStartOf="@+id/tv_signup_name_text"
                 app:layout_constraintTop_toBottomOf="@+id/tv_signup_password" />
@@ -302,10 +313,12 @@
                 android:layout_marginBottom="25dp"
                 android:background="@color/signup_box"
                 android:fontFamily="@font/inter_regular"
-                android:hint="비밀번호를 입력해주세요"
+                android:hint="비밀번호를 다시 입력해주세요"
                 android:paddingLeft="15dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:inputType="textPassword"
+                android:textCursorDrawable="@drawable/cursor_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/tv_signup_name_text"
                 app:layout_constraintStart_toStartOf="@+id/tv_signup_name_text"
