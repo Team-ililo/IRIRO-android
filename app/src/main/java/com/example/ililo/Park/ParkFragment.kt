@@ -13,12 +13,18 @@ import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.TimePicker
 import androidx.annotation.RequiresApi
+import com.example.ililo.ApplicationClass
+import com.example.ililo.Home.model.MainRes
+import com.example.ililo.Home.service.MainInterface
+import com.example.ililo.Home.service.MainService
 import com.example.ililo.R
 import com.example.ililo.databinding.FragmentParkBinding
 
-class ParkFragment: Fragment() {
+class ParkFragment: Fragment(), MainInterface {
     private var _binding: FragmentParkBinding? = null
     private val binding get() = _binding!!
+    private val vehicle_id = ApplicationClass.prefs.getLong("vehicle_id",0L)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,6 +37,8 @@ class ParkFragment: Fragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        MainService(this).tryGetMain(vehicle_id)
 
         //차량 출차 정보 조회
         binding.layoutDeparture.setOnClickListener{
@@ -79,5 +87,24 @@ class ParkFragment: Fragment() {
         cancel.setOnClickListener{
             mAlertDialog.dismiss()
         }
+    }
+
+    override fun onGetMainSuccess(response: MainRes) {
+        val res = response.data
+        var hour = res.exitTime.substring(0,2).toInt()
+        val min = res.exitTime.substring(3,5).toInt()
+
+        if(hour > 12){
+            //24시간 기준 오후
+            hour = hour - 12
+            binding.tvRegisterTime.text = "오후 " + hour.toString() + "시 " + min.toString() +"분"
+        } else {
+            //24시간 기준 오전
+            binding.tvRegisterTime.text = "오전 " + hour.toString() + "시 " + min.toString() +"분"
+        }
+    }
+
+    override fun onGetMainFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }
