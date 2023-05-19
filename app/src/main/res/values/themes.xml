@@ -26,4 +26,9 @@
         <item name="android:windowBackground">@color/white</item>
 
     </style>
+
+    <!-- Cursor Theme -->
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="colorControlActivated">@color/main</item>
+    </style>
 </resources>
