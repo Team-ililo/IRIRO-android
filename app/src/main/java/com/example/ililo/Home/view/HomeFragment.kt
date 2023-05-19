@@ -147,12 +147,22 @@ class HomeFragment: Fragment(), NoticeListInterface, MainInterface {
         binding.tvAddress.text = res.address + "님"
         binding.tvApartment.text = res.apartmentName
         binding.tvAddressDown.text = res.address + "님"
-        binding.tvTime.text = res.remainingTime.substring(1,2) + "시간 " + res.remainingTime.substring(3,5) +"분"
+
         if(hour > 12){
+            //12시간 넘으면 두자리 출력
+            binding.tvTime.text = res.remainingTime.substring(0,2) + "시간 " + res.remainingTime.substring(3,5) +"분"
+        } else {
+            //12시간 넘지 않으면 한자리 출력
+            binding.tvTime.text = res.remainingTime.substring(1,2) + "시간 " + res.remainingTime.substring(3,5) +"분"
+        }
+        
+        if(hour > 12){
+            //24시간 기준 오후
             hour = hour - 12
             binding.tvGoOutTime.text = "오후 " + hour.toString() + "시 " + min.toString() +"분"
             binding.tvRegisterTime.text = "오후 " + hour.toString() + "시 " + min.toString() +"분"
         } else {
+            //24시간 기준 오전
             binding.tvGoOutTime.text = "오전 " + hour.toString() + "시 " + min.toString() +"분"
             binding.tvRegisterTime.text = "오전 " + hour.toString() + "시 " + min.toString() +"분"
         }
