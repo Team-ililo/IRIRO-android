@@ -1,4 +1,4 @@
-package com.example.ililo.Park.adapter
+package com.example.ililo.Park.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

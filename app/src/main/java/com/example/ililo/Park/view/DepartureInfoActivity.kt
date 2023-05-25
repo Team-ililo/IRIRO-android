@@ -1,4 +1,4 @@
-package com.example.ililo.Park
+package com.example.ililo.Park.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.example.ililo.Park
+package com.example.ililo.Park.view
 
 import android.content.Intent
 import android.graphics.Color

@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.ililo.Home.view.HomeFragment
 import com.example.ililo.My.view.MyPageFragment
-import com.example.ililo.Park.ParkFragment
+import com.example.ililo.Park.view.ParkFragment
 import com.example.ililo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
