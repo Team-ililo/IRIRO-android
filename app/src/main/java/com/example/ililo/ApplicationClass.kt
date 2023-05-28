@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class ApplicationClass : Application() {
-    val API_URL = "http://15.165.97.134:8080/"
+    val API_URL = "http://13.209.179.119:8080/"
 
     companion object {
         //프로필 정보 저장 위한 SharedPreferences
