@@ -4,14 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ililo.Declare.model.DeclareListResult
+import com.example.ililo.Declare.model.Reports
 import com.example.ililo.databinding.ItemDeclareNoticeListBinding
 
-class DeclareListRVAdapter (private val dataList: ArrayList<DeclareListResult>): RecyclerView.Adapter<DeclareListRVAdapter.DataViewHolder>(){
+class DeclareListRVAdapter (private val dataList: ArrayList<Reports>): RecyclerView.Adapter<DeclareListRVAdapter.DataViewHolder>(){
 
     inner class DataViewHolder(val binding: ItemDeclareNoticeListBinding):
             RecyclerView.ViewHolder(binding.root) {
-                fun bind(data: DeclareListResult) {
-                    binding.tvDeclare.text = data.complaint_contents.toString()
+                fun bind(data: Reports) {
+                    binding.tvDeclare.text = data.complaint_contents
+                    binding.tvDeclareDate.text = data.complaint_date
                 }
             }
 

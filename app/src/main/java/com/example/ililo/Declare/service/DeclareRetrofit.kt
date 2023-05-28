@@ -19,6 +19,4 @@ interface DeclareRetrofit {
     fun getDeclareListRes(
         @Path("id") id: Long
     ) : Call<DeclareListRes>
-
-
 }

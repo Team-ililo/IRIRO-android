@@ -8,6 +8,7 @@ import com.example.ililo.ApplicationClass.Companion.prefs
 import com.example.ililo.Declare.model.DeclareListRes
 import com.example.ililo.Declare.model.DeclareListResult
 import com.example.ililo.Declare.model.DeclareRes
+import com.example.ililo.Declare.model.Reports
 import com.example.ililo.Declare.service.DeclareInterface
 import com.example.ililo.Declare.service.DeclareService
 import com.example.ililo.Declare.view.adapter.DeclareListRVAdapter
@@ -42,13 +43,13 @@ class MemberDeclareListActivity : AppCompatActivity(), DeclareInterface {
         Log.d("신고내역", "success")
 
         val res = response.data
-        val declareList: ArrayList<DeclareListResult> = arrayListOf()
+        val declareList: ArrayList<Reports> = arrayListOf()
         val listAdapter = DeclareListRVAdapter(declareList)
 
         binding.rvDeclareReason.adapter = listAdapter
         binding.rvDeclareReason.layoutManager = LinearLayoutManager(this)
 
-        declareList.addAll(listOf(res))
+        declareList.addAll(res.reports)
 
         binding.tvDeclareTime.text = res.number_of_complaints.toString() +"회"
     }

@@ -54,7 +54,7 @@
         android:fontFamily="@font/inter_regular"
         android:paddingLeft="15dp"
         android:hint="차량 번호 뒤 4자리를 입력해주세요"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="16sp"
         android:textCursorDrawable="@drawable/cursor_color"
