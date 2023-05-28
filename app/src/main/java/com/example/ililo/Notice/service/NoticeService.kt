@@ -11,8 +11,8 @@ import retrofit2.Response
 class NoticeService(val noticeListInterface: NoticeListInterface) {
     private val retrofit: NoticeRetrofit = ApplicationClass.sRetrofit.create(NoticeRetrofit::class.java)
 
-    fun tryGetNoticeList(id: Long){
-        retrofit.getNoticeRes(id).enqueue(object : Callback<NoticeRes>{
+    fun tryGetNoticeList(apartmentName: String){
+        retrofit.getNoticeRes(apartmentName).enqueue(object : Callback<NoticeRes>{
             override fun onResponse(call: Call<NoticeRes>, response: Response<NoticeRes>) {
                 if (response.isSuccessful) {
                     noticeListInterface.onGetNoticeListSuccess(response.body() as NoticeRes)

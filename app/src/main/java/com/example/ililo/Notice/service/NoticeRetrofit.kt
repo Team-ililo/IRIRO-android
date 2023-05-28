@@ -6,8 +6,8 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface NoticeRetrofit {
-    @GET("apartment/{id}")
+    @GET("apartment/{apartmentName}")
     fun getNoticeRes(
-        @Path("id") id: Long
+        @Path("apartmentName") apartmentName: String
     ) : Call<NoticeRes>
 }
