@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,10 +18,12 @@ import com.example.ililo.ApplicationClass
 import com.example.ililo.Home.model.MainRes
 import com.example.ililo.Home.service.MainInterface
 import com.example.ililo.Home.service.MainService
+import com.example.ililo.Park.model.ParkService
+import com.example.ililo.Park.model.Parkinterface
 import com.example.ililo.R
 import com.example.ililo.databinding.FragmentParkBinding
 
-class ParkFragment: Fragment(), MainInterface {
+class ParkFragment: Fragment(), MainInterface, Parkinterface {
     private var _binding: FragmentParkBinding? = null
     private val binding get() = _binding!!
     private val vehicle_id = ApplicationClass.prefs.getLong("vehicle_id",0L)
@@ -67,21 +70,26 @@ class ParkFragment: Fragment(), MainInterface {
         mAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))  //배경 투명처리 해줘야 배경 모양 드러남
 
         save.setOnClickListener{
+            var hour = ""
+            var min = ""
+            var exitTime = ""
+            var departure = false
+
             if(cBox.isChecked){
                 binding.tvRegisterTime.text = "장시간 이동 예정이 없어요!"
+                departure = true
+                exitTime = ""
                 mAlertDialog.dismiss()
             }
             else{
-                var hour = (tPicker.hour.toString().padStart(2, '0')).toInt()
-                val min = tPicker.minute.toString().padStart(2, '0')
-                if (hour > 12) {
-                    hour = hour - 12
-                    binding.tvRegisterTime.text = "오후 $hour 시 $min 분"
-                } else {
-                    binding.tvRegisterTime.text = "오전 $hour 시 $min 분"
-                }
+                hour = (tPicker.hour.toString().padStart(2, '0'))
+                min = tPicker.minute.toString().padStart(2, '0')
+                exitTime = hour + ":" + min
                 mAlertDialog.dismiss()
             }
+
+            ParkService(this).tryPostParkRegister(vehicle_id, exitTime, departure)
+
         }
 
         cancel.setOnClickListener{
@@ -91,20 +99,34 @@ class ParkFragment: Fragment(), MainInterface {
 
     override fun onGetMainSuccess(response: MainRes) {
         val res = response.data
-        var hour = res.exitTime.substring(0,2).toInt()
-        val min = res.exitTime.substring(3,5).toInt()
 
-        if(hour > 12){
-            //24시간 기준 오후
-            hour = hour - 12
-            binding.tvRegisterTime.text = "오후 " + hour.toString() + "시 " + min.toString() +"분"
-        } else {
-            //24시간 기준 오전
-            binding.tvRegisterTime.text = "오전 " + hour.toString() + "시 " + min.toString() +"분"
+        if (res.exitTime != null && res.isLongTermParking != null) {
+            var hour = res.exitTime.substring(0,2).toInt()
+            val min = res.exitTime.substring(3,5).toInt()
+
+            if(hour > 12){
+                //24시간 기준 오후
+                hour = hour - 12
+                binding.tvRegisterTime.text = "오후 " + hour.toString() + "시 " + min.toString() +"분"
+            } else {
+                //24시간 기준 오전
+                binding.tvRegisterTime.text = "오전 " + hour.toString() + "시 " + min.toString() +"분"
+            }
         }
+
     }
 
     override fun onGetMainFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostRegisterSuccess(message: String) {
+        Log.d("등록하기","성공")
+        //새로고침 역할  --> 새로고침이 안됌..
+        MainService(this).tryGetMain(vehicle_id)
+    }
+
+    override fun onPostRegisterFailure(message: String) {
         TODO("Not yet implemented")
     }
 }

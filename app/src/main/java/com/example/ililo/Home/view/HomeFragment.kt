@@ -14,6 +14,7 @@ import android.widget.TextView
 import android.widget.TimePicker
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ililo.ApplicationClass.Companion.prefs
 import com.example.ililo.Declare.view.MemberDeclareListActivity
@@ -26,14 +27,16 @@ import com.example.ililo.Notice.service.NoticeListInterface
 import com.example.ililo.Notice.service.NoticeService
 import com.example.ililo.Notice.view.NoticeActivity
 import com.example.ililo.Notice.view.adapter.NoticeListRVAdapter
+import com.example.ililo.Park.model.ParkService
+import com.example.ililo.Park.model.Parkinterface
 import com.example.ililo.R
 import com.example.ililo.databinding.FragmentHomeBinding
 
 
-class HomeFragment: Fragment(), NoticeListInterface, MainInterface {
+class HomeFragment: Fragment(), NoticeListInterface, MainInterface, Parkinterface {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val id = prefs.getLong("apartment_id",0L)
+    private val name = prefs.getString("apartmentName","푸르지오")
     private val vehicle_id = prefs.getLong("vehicle_id",0L)
 
     override fun onCreateView(
@@ -49,7 +52,9 @@ class HomeFragment: Fragment(), NoticeListInterface, MainInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        NoticeService(this).tryGetNoticeList(id)
+        if (name != null) {
+            NoticeService(this).tryGetNoticeList(name)
+        }
 
         MainService(this).tryGetMain(vehicle_id)
 
@@ -81,6 +86,12 @@ class HomeFragment: Fragment(), NoticeListInterface, MainInterface {
         }
     }
 
+    // Fragment 새로고침
+//    fun refreshFragment(fragment: Fragment, fragmentManager: FragmentManager) {
+//        var ft: FragmentTransaction = fragmentManager.beginTransaction()
+//        ft.detach(fragment).attach(fragment).commit()
+//    }
+
     @RequiresApi(Build.VERSION_CODES.M)
     private fun registerTime(){
 
@@ -96,24 +107,30 @@ class HomeFragment: Fragment(), NoticeListInterface, MainInterface {
         mAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))  //배경 투명처리 해줘야 배경 모양 드러남
 
         save.setOnClickListener{
+            var hour = ""
+            var min = ""
+            var exitTime = ""
+            var departure = false
+
             if(cBox.isChecked){
                 binding.tvRegisterTime.text = "장시간 이동 예정이 없어요!"
+                binding.tvBoxMessage.text = "장시간 이동 예정이 없어요!"
                 binding.tvGoOutTime.text = "장기 주차 예정"
+                binding.tvTime.text = "-"
+                departure = true
+                exitTime = ""
                 mAlertDialog.dismiss()
             }
             else{
-                var hour = (tPicker.hour.toString().padStart(2, '0')).toInt()
-                val min = tPicker.minute.toString().padStart(2, '0')
-                if (hour > 12) {
-                    hour = hour - 12
-                    binding.tvRegisterTime.text = "오후 $hour 시 $min 분"
-                    binding.tvGoOutTime.text = "오후 $hour 시 $min 분"
-                } else {
-                    binding.tvRegisterTime.text = "오전 $hour 시 $min 분"
-                    binding.tvGoOutTime.text = "오전 $hour 시 $min 분"
-                }
+                binding.tvBoxMessage.text = "남았어요!"
+                hour = (tPicker.hour.toString().padStart(2, '0'))
+                min = tPicker.minute.toString().padStart(2, '0')
+                exitTime = hour + ":" + min
                 mAlertDialog.dismiss()
             }
+
+            ParkService(this).tryPostParkRegister(vehicle_id, exitTime, departure)
+
         }
 
         cancel.setOnClickListener{
@@ -141,34 +158,52 @@ class HomeFragment: Fragment(), NoticeListInterface, MainInterface {
 
     override fun onGetMainSuccess(response: MainRes) {
         val res = response.data
-        var hour = res.exitTime.substring(0,2).toInt()
-        val min = res.exitTime.substring(3,5).toInt()
 
         binding.tvAddress.text = res.address + "님"
         binding.tvApartment.text = res.apartmentName
         binding.tvAddressDown.text = res.address + "님"
 
-        if(hour > 12){
-            //12시간 넘으면 두자리 출력
-            binding.tvTime.text = res.remainingTime.substring(0,2) + "시간 " + res.remainingTime.substring(3,5) +"분"
-        } else {
-            //12시간 넘지 않으면 한자리 출력
-            binding.tvTime.text = res.remainingTime.substring(1,2) + "시간 " + res.remainingTime.substring(3,5) +"분"
+        if (res.exitTime != null && res.isLongTermParking != null) {
+            var hour = res.exitTime.substring(0,2).toInt()
+            val min = res.exitTime.substring(3,5).toInt()
+
+            if(hour > 12){
+                //12시간 넘으면 두자리 출력
+                binding.tvTime.text = res.remainingTime.substring(0,2) + "시간 " + res.remainingTime.substring(3,5) +"분"
+            } else {
+                //12시간 넘지 않으면 한자리 출력
+                binding.tvTime.text = res.remainingTime.substring(1,2) + "시간 " + res.remainingTime.substring(3,5) +"분"
+            }
+
+            if(hour > 12){
+                //24시간 기준 오후
+                hour = hour - 12
+                binding.tvGoOutTime.text = "오후 " + hour.toString() + "시 " + min.toString() +"분"
+                binding.tvRegisterTime.text = "오후 " + hour.toString() + "시 " + min.toString() +"분"
+            } else {
+                //24시간 기준 오전
+                binding.tvGoOutTime.text = "오전 " + hour.toString() + "시 " + min.toString() +"분"
+                binding.tvRegisterTime.text = "오전 " + hour.toString() + "시 " + min.toString() +"분"
+            }
         }
-        
-        if(hour > 12){
-            //24시간 기준 오후
-            hour = hour - 12
-            binding.tvGoOutTime.text = "오후 " + hour.toString() + "시 " + min.toString() +"분"
-            binding.tvRegisterTime.text = "오후 " + hour.toString() + "시 " + min.toString() +"분"
-        } else {
-            //24시간 기준 오전
-            binding.tvGoOutTime.text = "오전 " + hour.toString() + "시 " + min.toString() +"분"
-            binding.tvRegisterTime.text = "오전 " + hour.toString() + "시 " + min.toString() +"분"
-        }
+
+//        새로고침
+//        val ft: FragmentTransaction = requireFragmentManager().beginTransaction()
+//        ft.detach(this).attach(this).commit()
+
     }
 
     override fun onGetMainFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostRegisterSuccess(message: String) {
+        Log.d("등록하기","성공")
+        //새로고침 역할  --> 새로고침이 안됌..
+        MainService(this).tryGetMain(vehicle_id)
+    }
+
+    override fun onPostRegisterFailure(message: String) {
         TODO("Not yet implemented")
     }
 }
