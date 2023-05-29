@@ -18,6 +18,7 @@ import com.example.ililo.ApplicationClass
 import com.example.ililo.Home.model.MainRes
 import com.example.ililo.Home.service.MainInterface
 import com.example.ililo.Home.service.MainService
+import com.example.ililo.Park.model.NearVehicleRes
 import com.example.ililo.Park.model.ParkService
 import com.example.ililo.Park.model.Parkinterface
 import com.example.ililo.R
@@ -112,6 +113,8 @@ class ParkFragment: Fragment(), MainInterface, Parkinterface {
                 //24시간 기준 오전
                 binding.tvRegisterTime.text = "오전 " + hour.toString() + "시 " + min.toString() +"분"
             }
+        } else if (res.isLongTermParking != null) {
+            binding.tvRegisterTime.text = "장시간 이동 예정이 없어요!"
         }
 
     }
@@ -127,6 +130,14 @@ class ParkFragment: Fragment(), MainInterface, Parkinterface {
     }
 
     override fun onPostRegisterFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetNearVehicleSuccess(response: NearVehicleRes) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetNearVehicleFailure(message: String) {
         TODO("Not yet implemented")
     }
 }

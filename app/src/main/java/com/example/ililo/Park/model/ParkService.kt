@@ -29,4 +29,23 @@ class ParkService(val parkinterface: Parkinterface) {
             }
         }))
     }
+
+    fun tryGetNearVehicle(id: Long) {
+        retrofit.getNearVehicleReq(id).enqueue((object : Callback<NearVehicleRes>{
+            override fun onResponse(call: Call<NearVehicleRes>, response: Response<NearVehicleRes>) {
+                if (response.isSuccessful) {
+                    parkinterface.onGetNearVehicleSuccess(response.body() as NearVehicleRes)
+                    Log.d("getNearVehicleReq", "success")
+                } else {
+                    Log.d("getNearVehicleReq", "failure")
+                }
+            }
+
+            override fun onFailure(call: Call<NearVehicleRes>, t: Throwable) {
+                Log.d("tryGetNearVehicle", t.message!!)
+                t.printStackTrace()
+                parkinterface.onGetNearVehicleFailure(t.message ?: "통신오류")
+            }
+        }))
+    }
 }
