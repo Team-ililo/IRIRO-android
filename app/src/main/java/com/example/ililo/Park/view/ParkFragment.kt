@@ -113,7 +113,7 @@ class ParkFragment: Fragment(), MainInterface, Parkinterface {
                 //24시간 기준 오전
                 binding.tvRegisterTime.text = "오전 " + hour.toString() + "시 " + min.toString() +"분"
             }
-        } else if (res.isLongTermParking != null) {
+        } else if (res.exitTime == null && res.isLongTermParking == true) {
             binding.tvRegisterTime.text = "장시간 이동 예정이 없어요!"
         }
 
