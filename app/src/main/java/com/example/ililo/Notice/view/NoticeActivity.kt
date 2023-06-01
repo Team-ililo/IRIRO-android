@@ -49,6 +49,7 @@ class NoticeActivity : AppCompatActivity(), NoticeListInterface {
     }
 
     override fun onGetNoticeListFailure(message: String) {
+        binding.tvNoticeError.text = message
         Log.d("공지사항", "failure")
     }
 }

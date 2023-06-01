@@ -4,6 +4,8 @@ import android.app.Application
 import android.util.Log
 import com.example.ililo.ApplicationClass
 import com.example.ililo.Notice.model.NoticeRes
+import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,7 +20,15 @@ class NoticeService(val noticeListInterface: NoticeListInterface) {
                     noticeListInterface.onGetNoticeListSuccess(response.body() as NoticeRes)
                     Log.d("getNotice", "success")
                 } else {
-                    Log.d("getNotice", "failure")
+                    val errorResponse = response.errorBody()?.string()
+                    val errorMessage = try {
+                        val errorJson = JSONObject(errorResponse)
+                        errorJson.getString("message")
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                        null
+                    }
+                    noticeListInterface.onGetNoticeListFailure(errorMessage ?: "통신오류")
                 }
             }
             override fun onFailure(call: Call<NoticeRes>, t: Throwable) {
