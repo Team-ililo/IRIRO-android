@@ -42,7 +42,7 @@ class SignInActivity : AppCompatActivity(), SignInInterface {
     override fun onPostSignUpSuccess(response: SignInRes) {
 
         val member_id = response.data.member_id
-        val apartment_id = response.data.apartment_id
+        val apartment_name = response.data.apartment_name
         val device_id = response.data.device_id
         val vehicle_id = response.data.vehicle_id
 
@@ -52,7 +52,7 @@ class SignInActivity : AppCompatActivity(), SignInInterface {
 
         val editor = prefs.edit()
         editor.putLong("member_id", member_id)
-        editor.putLong("apartment_id", apartment_id)
+        editor.putString("apartment_name", apartment_name)
         editor.putLong("device_id", device_id)
         editor.putLong("vehicle_id", vehicle_id)
         editor.apply()
@@ -60,6 +60,7 @@ class SignInActivity : AppCompatActivity(), SignInInterface {
 
     override fun onPostSignUpFailure(message: String) {
         Log.d("onPostSignUpFailure", "failure")
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
 }
