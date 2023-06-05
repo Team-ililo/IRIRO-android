@@ -3,6 +3,7 @@ package com.example.ililo.Park.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ililo.ApplicationClass.Companion.prefs
 import com.example.ililo.Park.model.NearVehicleList
@@ -16,15 +17,23 @@ class DepartureInfoActivity : AppCompatActivity(), Parkinterface {
     private val binding: ActivityDepartureInfoBinding by lazy {
         ActivityDepartureInfoBinding.inflate(layoutInflater)
     }
-    private val device_id = prefs.getLong("device_id",0L)
+    private val device_id = prefs.getString("device_id","")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        ParkService(this).tryGetNearVehicle(device_id)
-
-        binding.btnRefresh.setOnClickListener {
+        if (device_id != null) {
             ParkService(this).tryGetNearVehicle(device_id)
+        }
+
+        //새로고침 버튼 그림자 주기
+        ViewCompat.setElevation(binding.btnRefresh, 10f)
+
+        //새로고침
+        binding.btnRefresh.setOnClickListener {
+            if (device_id != null) {
+                ParkService(this).tryGetNearVehicle(device_id)
+            }
         }
 
         //뒤로가기
@@ -52,6 +61,6 @@ class DepartureInfoActivity : AppCompatActivity(), Parkinterface {
     }
 
     override fun onGetNearVehicleFailure(message: String) {
-        Log.d("주변차량조회", "failure")
+        binding.tvDepartureError.text = message
     }
 }
