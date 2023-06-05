@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:fontFamily="@font/inter_semibold"
-        android:text="2회"
+        android:text="0회"
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_declare_time_title"
@@ -59,8 +59,8 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="-30dp"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="30dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,6 +75,7 @@
                 android:id="@+id/tv_declare_reason_title2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:fontFamily="@font/inter_semibold"
                 android:text="신고 사유"
                 android:textColor="@color/black"
@@ -86,11 +87,24 @@
                 android:id="@+id/rv_declare_reason"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="25dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="25dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tv_declare_reason_title2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_declare_reason_title2" />
+
+            <TextView
+                android:id="@+id/tv_declare_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_semibold"
+                android:textColor="@color/grey"
+                app:layout_constraintBottom_toBottomOf="@+id/rv_declare_reason"
+                app:layout_constraintEnd_toEndOf="@+id/rv_declare_reason"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_declare_reason_title2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
