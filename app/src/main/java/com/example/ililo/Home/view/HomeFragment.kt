@@ -27,6 +27,7 @@ import com.example.ililo.Notice.service.NoticeListInterface
 import com.example.ililo.Notice.service.NoticeService
 import com.example.ililo.Notice.view.NoticeActivity
 import com.example.ililo.Notice.view.adapter.NoticeListRVAdapter
+import com.example.ililo.Park.model.NearVehicleRes
 import com.example.ililo.Park.model.ParkService
 import com.example.ililo.Park.model.Parkinterface
 import com.example.ililo.R
@@ -36,7 +37,7 @@ import com.example.ililo.databinding.FragmentHomeBinding
 class HomeFragment: Fragment(), NoticeListInterface, MainInterface, Parkinterface {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val name = prefs.getString("apartmentName","푸르지오")
+    private val name = prefs.getString("apartment_name","푸르지오")
     private val vehicle_id = prefs.getLong("vehicle_id",0L)
 
     override fun onCreateView(
@@ -153,7 +154,7 @@ class HomeFragment: Fragment(), NoticeListInterface, MainInterface, Parkinterfac
     }
 
     override fun onGetNoticeListFailure(message: String) {
-        TODO("Not yet implemented")
+        binding.tvError.text = message
     }
 
     override fun onGetMainSuccess(response: MainRes) {
@@ -167,13 +168,9 @@ class HomeFragment: Fragment(), NoticeListInterface, MainInterface, Parkinterfac
             var hour = res.exitTime.substring(0,2).toInt()
             val min = res.exitTime.substring(3,5).toInt()
 
-            if(hour > 12){
-                //12시간 넘으면 두자리 출력
-                binding.tvTime.text = res.remainingTime.substring(0,2) + "시간 " + res.remainingTime.substring(3,5) +"분"
-            } else {
-                //12시간 넘지 않으면 한자리 출력
-                binding.tvTime.text = res.remainingTime.substring(1,2) + "시간 " + res.remainingTime.substring(3,5) +"분"
-            }
+            binding.tvBoxMessage.text = "남았어요!"
+
+            binding.tvTime.text = res.remainingTime.substring(0,2) + "시간 " + res.remainingTime.substring(3,5) +"분"
 
             if(hour > 12){
                 //24시간 기준 오후
@@ -185,6 +182,10 @@ class HomeFragment: Fragment(), NoticeListInterface, MainInterface, Parkinterfac
                 binding.tvGoOutTime.text = "오전 " + hour.toString() + "시 " + min.toString() +"분"
                 binding.tvRegisterTime.text = "오전 " + hour.toString() + "시 " + min.toString() +"분"
             }
+        } else if (res.exitTime == null && res.isLongTermParking == true) {
+            binding.tvRegisterTime.text = "장시간 이동 예정이 없어요!"
+            binding.tvBoxMessage.text = "장시간 이동 예정이 없어요!"
+            binding.tvGoOutTime.text = "장기 주차 예정"
         }
 
 //        새로고침
@@ -204,6 +205,14 @@ class HomeFragment: Fragment(), NoticeListInterface, MainInterface, Parkinterfac
     }
 
     override fun onPostRegisterFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetNearVehicleSuccess(response: NearVehicleRes) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetNearVehicleFailure(message: String) {
         TODO("Not yet implemented")
     }
 }
