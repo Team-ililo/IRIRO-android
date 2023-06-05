@@ -18,6 +18,6 @@ interface ParkRetrofit {
 
     @GET("nearvehicles/{id}")
     fun getNearVehicleReq(
-        @Path("id") id: Long,
+        @Path("id") id: String,
     ) : Call<NearVehicleRes>
 }
