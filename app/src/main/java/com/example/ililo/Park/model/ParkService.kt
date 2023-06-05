@@ -4,6 +4,8 @@ import android.util.Log
 import com.example.ililo.ApplicationClass.Companion.sRetrofit
 import com.example.ililo.BaseResponse
 import com.example.ililo.Park.service.ParkRetrofit
+import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,14 +32,22 @@ class ParkService(val parkinterface: Parkinterface) {
         }))
     }
 
-    fun tryGetNearVehicle(id: Long) {
+    fun tryGetNearVehicle(id: String) {
         retrofit.getNearVehicleReq(id).enqueue((object : Callback<NearVehicleRes>{
             override fun onResponse(call: Call<NearVehicleRes>, response: Response<NearVehicleRes>) {
                 if (response.isSuccessful) {
                     parkinterface.onGetNearVehicleSuccess(response.body() as NearVehicleRes)
                     Log.d("getNearVehicleReq", "success")
                 } else {
-                    Log.d("getNearVehicleReq", "failure")
+                    val errorResponse = response.errorBody()?.string()
+                    val errorMessage = try {
+                        val errorJson = JSONObject(errorResponse)
+                        errorJson.getString("message")
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                        null
+                    }
+                    parkinterface.onGetNearVehicleFailure(errorMessage ?: "통신오류")
                 }
             }
 

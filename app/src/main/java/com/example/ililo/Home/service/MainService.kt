@@ -3,6 +3,8 @@ package com.example.ililo.Home.service
 import android.util.Log
 import com.example.ililo.ApplicationClass.Companion.sRetrofit
 import com.example.ililo.Home.model.MainRes
+import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,7 +19,15 @@ class MainService(val mainInterface: MainInterface) {
                     mainInterface.onGetMainSuccess(response.body() as MainRes)
                     Log.d("tryGetMain", "success")
                 } else {
-                    Log.d("tryGetMain", "failure")
+                    val errorResponse = response.errorBody()?.string()
+                    val errorMessage = try {
+                        val errorJson = JSONObject(errorResponse)
+                        errorJson.getString("message")
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                        null
+                    }
+                    mainInterface.onGetMainFailure(errorMessage ?: "통신오류")
                 }
             }
 

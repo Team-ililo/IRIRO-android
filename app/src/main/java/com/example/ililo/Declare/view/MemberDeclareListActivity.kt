@@ -52,6 +52,10 @@ class MemberDeclareListActivity : AppCompatActivity(), DeclareInterface {
         declareList.addAll(res.reports)
 
         binding.tvDeclareTime.text = res.number_of_complaints.toString() +"회"
+
+        if (res.number_of_complaints == 0L) {
+            binding.tvDeclareError.text = "신고내역이 존재하지 않습니다."
+        }
     }
 
     override fun onGetDeclareListFailure(message: String) {
