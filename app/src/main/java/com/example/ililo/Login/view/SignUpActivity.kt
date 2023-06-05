@@ -45,7 +45,7 @@ class SignUpActivity : AppCompatActivity(), SignUpInterface {
             val email = binding.tvSignupEmailText.text.toString()
             val password = binding.tvSignupPasswordText.text.toString()
             val pw_check = binding.tvSignupPwCheckText.text.toString()
-            val device_id = binding.tvSignupDeviceText.text.toString().toInt()
+            val device_id = binding.tvSignupDeviceText.text.toString()
 
             val editor = prefs.edit()
 
@@ -57,7 +57,7 @@ class SignUpActivity : AppCompatActivity(), SignUpInterface {
                 editor.putString("name", name)
                 editor.putString("email", email)
                 editor.putString("password", password)
-                editor.putInt("device_id", device_id)
+                editor.putString("device_id", device_id)
                 editor.apply()
 
                 SignUpService(this).tryPostSignUp(name, phone_number,
@@ -79,6 +79,6 @@ class SignUpActivity : AppCompatActivity(), SignUpInterface {
 
     override fun onPostSignUpFailure(message: String) {
         Log.d("SignUp","실패")
-        Toast.makeText(this, "회원가입에 실패했습니다!\n 다시 시도해주세요.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

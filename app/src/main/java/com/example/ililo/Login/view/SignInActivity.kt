@@ -53,7 +53,7 @@ class SignInActivity : AppCompatActivity(), SignInInterface {
         val editor = prefs.edit()
         editor.putLong("member_id", member_id)
         editor.putString("apartment_name", apartment_name)
-        editor.putLong("device_id", device_id)
+        editor.putString("device_id", device_id)
         editor.putLong("vehicle_id", vehicle_id)
         editor.apply()
     }

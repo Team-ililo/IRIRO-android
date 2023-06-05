@@ -11,5 +11,5 @@ data class SignUpReq(
     val email: String,
     val password: String,
     val pw_check: String,
-    val device_id: Int,
+    val device_id: String,
 )
