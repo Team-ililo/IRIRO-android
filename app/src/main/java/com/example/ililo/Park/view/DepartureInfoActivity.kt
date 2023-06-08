@@ -2,13 +2,12 @@ package com.example.ililo.Park.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ililo.ApplicationClass.Companion.prefs
 import com.example.ililo.Park.model.NearVehicleList
 import com.example.ililo.Park.model.NearVehicleRes
-import com.example.ililo.Park.model.ParkService
+import com.example.ililo.Park.service.ParkService
 import com.example.ililo.Park.model.Parkinterface
 import com.example.ililo.Park.view.adapter.DepartureListRVAdapter
 import com.example.ililo.databinding.ActivityDepartureInfoBinding

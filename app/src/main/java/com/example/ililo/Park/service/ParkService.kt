@@ -1,9 +1,11 @@
-package com.example.ililo.Park.model
+package com.example.ililo.Park.service
 
 import android.util.Log
 import com.example.ililo.ApplicationClass.Companion.sRetrofit
 import com.example.ililo.BaseResponse
-import com.example.ililo.Park.service.ParkRetrofit
+import com.example.ililo.Park.model.NearVehicleRes
+import com.example.ililo.Park.model.Parkinterface
+import com.example.ililo.Park.model.RegisterReq
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Call

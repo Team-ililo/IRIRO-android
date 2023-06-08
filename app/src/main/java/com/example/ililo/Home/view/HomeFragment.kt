@@ -14,7 +14,6 @@ import android.widget.TextView
 import android.widget.TimePicker
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ililo.ApplicationClass.Companion.prefs
 import com.example.ililo.Declare.view.MemberDeclareListActivity
@@ -28,7 +27,7 @@ import com.example.ililo.Notice.service.NoticeService
 import com.example.ililo.Notice.view.NoticeActivity
 import com.example.ililo.Notice.view.adapter.NoticeListRVAdapter
 import com.example.ililo.Park.model.NearVehicleRes
-import com.example.ililo.Park.model.ParkService
+import com.example.ililo.Park.service.ParkService
 import com.example.ililo.Park.model.Parkinterface
 import com.example.ililo.R
 import com.example.ililo.databinding.FragmentHomeBinding

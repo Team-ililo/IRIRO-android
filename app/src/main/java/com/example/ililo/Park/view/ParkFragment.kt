@@ -19,7 +19,7 @@ import com.example.ililo.Home.model.MainRes
 import com.example.ililo.Home.service.MainInterface
 import com.example.ililo.Home.service.MainService
 import com.example.ililo.Park.model.NearVehicleRes
-import com.example.ililo.Park.model.ParkService
+import com.example.ililo.Park.service.ParkService
 import com.example.ililo.Park.model.Parkinterface
 import com.example.ililo.R
 import com.example.ililo.databinding.FragmentParkBinding
